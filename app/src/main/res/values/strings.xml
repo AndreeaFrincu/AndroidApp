@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AndroidApp</string>
+    <string name="smart_home">Smart Home</string>
+    <string name="splashImageDescription">Smart Home Image</string>
 </resources>
