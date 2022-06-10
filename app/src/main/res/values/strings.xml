@@ -2,4 +2,6 @@
     <string name="app_name">AndroidApp</string>
     <string name="smart_home">Smart Home</string>
     <string name="splashImageDescription">Smart Home Image</string>
+    <string name="welcome">Welcome</string>
+    <string name="sign_in_with_google_btn">sign in with Google</string>
 </resources>
