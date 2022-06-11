@@ -1,14 +1,18 @@
 package com.dev.androidapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.androidapp.Item
 import com.dev.androidapp.ItemAdapter
 import com.dev.androidapp.R
+import com.dev.androidapp.databinding.FragmentFilesBinding
 import kotlinx.android.synthetic.main.fragment_files.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -26,6 +30,9 @@ class FilesFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var searchView: SearchView
+    private lateinit var binding: FragmentFilesBinding
+
     // dummy data
     private var metrics = listOf<Item>(
         Item(1, "Room1", "temperature", 25.1),
@@ -42,19 +49,36 @@ class FilesFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        binding = FragmentFilesBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?): View? {
+        val view: View = inflater.inflate(R.layout.fragment_files, container, false)
+
+        searchView = view.findViewById(R.id.widgetsSearch)
+        searchView.clearFocus()
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.d("TAG", "here")
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                filterList(newText)
+                return true
+            }
+        })
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_files, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         showItems(metrics)
     }
 
@@ -80,6 +104,24 @@ class FilesFragment : Fragment() {
 
     private fun showItems(items: List<Item>) {
         widgetsRecycler.layoutManager = LinearLayoutManager(activity)
-        widgetsRecycler.adapter = ItemAdapter(metrics)
+        widgetsRecycler.adapter = ItemAdapter(items)
+    }
+
+    private fun filterList(text: String) {
+        Toast.makeText(activity, "aaaaaaaaaaa", Toast.LENGTH_SHORT)
+
+        val filteredList: MutableList<Item> = ArrayList<Item>()
+        for (item in metrics) {
+            if (item.title.lowercase().contains(text.lowercase())) {
+                filteredList.add(item)
+            }
+        }
+
+        if (filteredList.isEmpty()) {
+            Toast.makeText(activity, "result not found for search", Toast.LENGTH_SHORT)
+        }
+        else {
+//            widgetsRecycler.setFilteredList()
+        }
     }
 }

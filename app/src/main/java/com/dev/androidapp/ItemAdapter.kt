@@ -1,12 +1,13 @@
 package com.dev.androidapp
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.layout_item.view.*
 
-class ItemAdapter(val items : List<Item>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+class ItemAdapter(var items : List<Item>) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder(
@@ -26,5 +27,10 @@ class ItemAdapter(val items : List<Item>) : RecyclerView.Adapter<ItemAdapter.Ite
     }
 
     class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view)
+
+//    private fun setFilteredList(filteredList: List<Item>) {
+//        this.items = filteredList
+//        notifyDataSetChanged()
+//    }
 
 }
