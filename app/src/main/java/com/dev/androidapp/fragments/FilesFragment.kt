@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.dev.androidapp.Item
+import com.dev.androidapp.ItemAdapter
 import com.dev.androidapp.R
+import kotlinx.android.synthetic.main.fragment_files.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +26,16 @@ class FilesFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    // dummy data
+    private var metrics = listOf<Item>(
+        Item(1, "Room1", "temperature", 25.1),
+        Item(2, "Kitchen", "temperature", 22.2),
+        Item(3, "Room1", "luminous intensity", 12.0),
+        Item(4, "Kitchen", "luminous intensity",  3.2),
+        Item(5, "Room1", "ac temperature set", 20.2),
+        Item(6, "Room2", "ac temperature set", 19.5)
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -36,6 +50,12 @@ class FilesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_files, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        showItems(metrics)
     }
 
     companion object {
@@ -56,5 +76,10 @@ class FilesFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    private fun showItems(items: List<Item>) {
+        widgetsRecycler.layoutManager = LinearLayoutManager(activity)
+        widgetsRecycler.adapter = ItemAdapter(metrics)
     }
 }

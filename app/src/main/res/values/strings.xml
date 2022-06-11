@@ -17,4 +17,6 @@
     <string name="home_fragment">Home</string>
     <string name="files_fragment">Files</string>
     <string name="gallery_fragment">Gallery</string>
+    <string name="listAdapterText">Text</string>
+    <string name="recycler_item_content">recycler item content</string>
 </resources>

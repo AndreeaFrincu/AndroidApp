@@ -3,10 +3,12 @@ package com.dev.androidapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.androidapp.fragments.FilesFragment
 import com.dev.androidapp.fragments.GalleryFragment
 import com.dev.androidapp.fragments.HomeFragment
 import kotlinx.android.synthetic.main.activity_dashboard.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class DashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
