@@ -1,9 +1,20 @@
 <resources>
     <string name="app_name">AndroidApp</string>
+
     <string name="smart_home">Smart Home</string>
     <string name="splashImageDescription">Smart Home Image</string>
+
     <string name="welcome">Welcome</string>
     <string name="sign_in_with_google_btn">sign in with Google</string>
+
     <string name="dashboard_email">Email</string>
     <string name="dashboard_profile_picture">Profile Picture</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_files">Logs</string>
+    <string name="nav_gallery">Media</string>
+
+    <string name="home_fragment">Home</string>
+    <string name="files_fragment">Files</string>
+    <string name="gallery_fragment">Gallery</string>
 </resources>
